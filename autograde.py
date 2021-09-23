@@ -12,10 +12,12 @@ def main():
 
     if os.path.exists('./compilar'):
         print('Chamando ./compilar')
+        os.chmod('./compilar', 0o755)
         os.system('./compilar')
 
     for i, weight in enumerate(tests_weight):
         testno = i + 1
+        os.chmod('./servidor', 0o755)
         pid = os.spawnlp(os.P_NOWAIT, './servidor', './servidor')
         print('\nServidor executando no pid=%d' % pid)
         time.sleep(1)
